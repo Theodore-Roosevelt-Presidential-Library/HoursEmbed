@@ -19,14 +19,20 @@ Add a **Code block** on the Contact page:
 <script src="https://theodore-roosevelt-presidential-library.github.io/HoursEmbed/embed.js" defer></script>
 ```
 
+### Theming
+
+By default (`data-theme="auto"`) the widget adapts to where it sits: it detects the background color behind it (including Squarespace's `.section-background` pattern) and switches to light-on-dark styling on dark or colored sections — on Salt + Scoria's scoria-red section the active tab renders cream with the section's own red as the label color. It also adopts the host page's fonts automatically: headings (tabs, venue name) use the page's heading font (Dharma Gothic E on saltandscoria.com), body rows use the page's paragraph font (ITC Clearface).
+
 Options on the container div:
 
 | Attribute | Effect |
 |---|---|
-| `data-accent="#8a3324"` | Accent color for the active tab and headings |
+| `data-theme="auto\|light\|dark\|scoria"` | Force a palette; `scoria` is the hand-tuned light-on-red palette (`#FAFAFA` on `#B63D25`) |
+| `data-accent="#b63d25"` | Accent color override (light theme headings/tabs) |
 | `data-heading="hide"` | Hide the "Salt + Scoria Restaurant" heading |
+| `data-fonts="off"` | Don't adopt host page fonts |
 
-Finer styling via CSS custom properties on the container: `--trpl-accent`, `--trpl-text`, `--trpl-muted`, `--trpl-border`, `--trpl-radius`, `--trpl-font`.
+Finer styling via CSS custom properties on the container: `--trpl-text`, `--trpl-muted`, `--trpl-border`, `--trpl-accent`, `--trpl-tab-active-bg`, `--trpl-tab-active-text`, `--trpl-radius`, `--trpl-font`, `--trpl-heading-font`.
 
 ## One-time setup
 

@@ -6,13 +6,26 @@
  *   <div data-trpl-hours></div>
  *   <script src="https://theodore-roosevelt-presidential-library.github.io/HoursEmbed/embed.js" defer></script>
  *
- * Optional overrides on the container element:
- *   data-accent="#8a3324"   accent color (active tab, headings)
- *   data-heading="hide"     hide the venue name heading
+ * Theming
+ * -------
+ * By default the widget looks at the background it sits on and at the host
+ * page's fonts, and adapts:
+ *   - dark/colored section  -> light text, translucent borders, cream active
+ *     tab whose label is tinted with the section's own background color
+ *   - light section         -> dark text with an oxblood accent
+ *   - headings use the same font as the host page's headings; body text uses
+ *     the host page's paragraph font
  *
- * Styling can also be tuned from the host page via CSS custom properties
- * set on the container: --trpl-accent, --trpl-text, --trpl-muted,
- * --trpl-border, --trpl-radius, --trpl-font.
+ * Manual overrides on the container element:
+ *   data-theme="auto|light|dark|scoria"  force a palette (default: auto)
+ *   data-accent="#b63d25"                accent color for the light theme
+ *   data-heading="hide"                  hide the venue name heading
+ *   data-fonts="off"                     don't adopt host page fonts
+ *
+ * Finer control via CSS custom properties on the container:
+ *   --trpl-text, --trpl-muted, --trpl-border, --trpl-accent,
+ *   --trpl-tab-active-bg, --trpl-tab-active-text, --trpl-radius,
+ *   --trpl-font, --trpl-heading-font
  */
 (function () {
   "use strict";
@@ -29,45 +42,178 @@
     ".trpl-hours {",
     "  display: block;",
     "  font-family: var(--trpl-font, inherit);",
-    "  color: var(--trpl-text, #1a1a1a);",
+    "  color: var(--trpl-text);",
     "  font-size: 1rem;",
     "  line-height: 1.5;",
     "}",
     ".trpl-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; padding: 0; list-style: none; }",
     ".trpl-tab {",
-    "  font: inherit; font-size: 0.875em; cursor: pointer;",
-    "  padding: 6px 14px; border-radius: var(--trpl-radius, 6px);",
-    "  border: 1px solid var(--trpl-accent, #8a3324);",
-    "  background: transparent; color: var(--trpl-accent, #8a3324);",
-    "  letter-spacing: 0.02em;",
+    "  font-family: var(--trpl-heading-font, var(--trpl-font, inherit));",
+    "  font-size: 1em; font-weight: 700; cursor: pointer;",
+    "  text-transform: uppercase; letter-spacing: 0.06em;",
+    "  padding: 6px 16px 5px; border-radius: var(--trpl-radius, 4px);",
+    "  border: 1px solid var(--trpl-tab-border);",
+    "  background: transparent; color: var(--trpl-text);",
     "}",
-    ".trpl-tab[aria-selected='true'] { background: var(--trpl-accent, #8a3324); color: #fff; }",
-    ".trpl-tab:focus-visible { outline: 2px solid var(--trpl-accent, #8a3324); outline-offset: 2px; }",
-    ".trpl-panel { border-top: 1px solid var(--trpl-border, #d8d3cc); padding-top: 16px; }",
+    ".trpl-tab[aria-selected='true'] {",
+    "  background: var(--trpl-tab-active-bg);",
+    "  color: var(--trpl-tab-active-text);",
+    "  border-color: var(--trpl-tab-active-bg);",
+    "}",
+    ".trpl-tab:focus-visible { outline: 2px solid var(--trpl-text); outline-offset: 2px; }",
+    ".trpl-panel { border-top: 1px solid var(--trpl-border); padding-top: 16px; }",
     ".trpl-panel[hidden] { display: none; }",
     ".trpl-daterange {",
-    "  font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;",
-    "  font-size: 0.875em; margin: 0 0 12px; padding-bottom: 12px;",
-    "  border-bottom: 1px solid var(--trpl-border, #d8d3cc);",
+    "  font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;",
+    "  font-size: 0.8125em; margin: 0 0 12px; padding-bottom: 12px;",
+    "  color: var(--trpl-muted);",
+    "  border-bottom: 1px solid var(--trpl-border);",
     "}",
-    ".trpl-card { border: 1px solid var(--trpl-border, #d8d3cc); border-radius: var(--trpl-radius, 6px); padding: 16px; margin-bottom: 12px; }",
-    ".trpl-venue { font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.875em; margin: 0 0 10px; color: var(--trpl-accent, #8a3324); }",
-    ".trpl-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 12px; }",
+    ".trpl-card { border: 1px solid var(--trpl-border); border-radius: var(--trpl-radius, 4px); padding: 18px 20px; margin-bottom: 14px; }",
+    ".trpl-venue {",
+    "  font-family: var(--trpl-heading-font, var(--trpl-font, inherit));",
+    "  font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;",
+    "  font-size: 1.5em; line-height: 1.1; margin: 0 0 12px;",
+    "  color: var(--trpl-accent);",
+    "}",
+    ".trpl-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 16px; }",
     ".trpl-grid > div { padding: 4px 0; font-size: 0.9375em; }",
-    ".trpl-colhead { font-style: italic; color: var(--trpl-muted, #6b6560); }",
+    ".trpl-colhead { font-style: italic; color: var(--trpl-muted); }",
     ".trpl-days { font-weight: 600; }",
     ".trpl-holiday { display: flex; justify-content: space-between; padding: 4px 0; font-size: 0.9375em; }",
-    ".trpl-holiday span:last-child { color: var(--trpl-muted, #6b6560); }",
-    ".trpl-note { font-size: 0.75em; color: var(--trpl-muted, #6b6560); margin-top: 10px; }",
-    ".trpl-note a { color: inherit; }",
+    ".trpl-holiday span:last-child { color: var(--trpl-muted); }",
     "@media (max-width: 480px) {",
     "  .trpl-grid { grid-template-columns: 1fr; }",
     "  .trpl-grid > .trpl-colhead { display: none; }",
     "  .trpl-grid > .trpl-cell { padding: 0 0 2px; }",
-    "  .trpl-grid > .trpl-cell::before { content: attr(data-label) ': '; font-style: italic; color: var(--trpl-muted, #6b6560); }",
+    "  .trpl-grid > .trpl-cell::before { content: attr(data-label) ': '; font-style: italic; color: var(--trpl-muted); }",
     "  .trpl-grid > .trpl-days { margin-top: 8px; }",
     "}"
   ].join("\n");
+
+  // ------------------------------------------------------------ theming
+
+  /** Palettes. Values may be functions of the detected section bg color. */
+  var THEMES = {
+    light: {
+      text: "#1a1a1a",
+      muted: "#6b6560",
+      border: "#d8d3cc",
+      accent: "#8a3324",
+      tabBorder: "#8a3324",
+      tabActiveBg: "#8a3324",
+      tabActiveText: "#ffffff"
+    },
+    dark: {
+      text: "#fafafa",
+      muted: "rgba(250,250,250,0.7)",
+      border: "rgba(250,250,250,0.35)",
+      accent: "#fafafa",
+      tabBorder: "rgba(250,250,250,0.6)",
+      tabActiveBg: "#fafafa",
+      tabActiveText: "#242729" // replaced with detected section bg when known
+    },
+    // Salt + Scoria's scoria-red sections (#b63d25)
+    scoria: {
+      text: "#fafafa",
+      muted: "rgba(250,250,250,0.72)",
+      border: "rgba(250,250,250,0.35)",
+      accent: "#fafafa",
+      tabBorder: "rgba(250,250,250,0.6)",
+      tabActiveBg: "#fafafa",
+      tabActiveText: "#b63d25"
+    }
+  };
+
+  /** Find the effective background color behind the container. Understands
+   *  Squarespace's pattern of painting sections via a .section-background
+   *  child rather than on the ancestor chain itself. */
+  function detectBackground(container) {
+    var n = container;
+    while (n && n !== document.documentElement) {
+      var bg = getComputedStyle(n).backgroundColor;
+      if (bg && bg !== "transparent" && !/rgba\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*,\s*0\s*\)/.test(bg)) {
+        return bg;
+      }
+      if (n.tagName === "SECTION") {
+        var sb = n.querySelector(".section-background");
+        if (sb) {
+          var sbg = getComputedStyle(sb).backgroundColor;
+          if (sbg && sbg !== "transparent" && !/,\s*0\s*\)$/.test(sbg)) return sbg;
+        }
+      }
+      n = n.parentElement;
+    }
+    return null;
+  }
+
+  function parseRgb(str) {
+    var m = /rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/.exec(str || "");
+    return m ? [Number(m[1]), Number(m[2]), Number(m[3])] : null;
+  }
+
+  function luminance(rgb) {
+    var a = rgb.map(function (v) {
+      v /= 255;
+      return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
+  }
+
+  /** Adopt the host page's fonts: headings from the nearest section heading
+   *  (falling back to any h1/h2), body from the nearest paragraph. Works in
+   *  Shadow DOM because document-registered @font-face applies there too. */
+  function adoptFonts(container, wrap) {
+    try {
+      var scope = container.closest("section") || document;
+      var h = scope.querySelector("h1, h2, h3, h4") ||
+              document.querySelector("h1, h2, h3");
+      if (h) wrap.style.setProperty("--trpl-heading-font", getComputedStyle(h).fontFamily);
+      var p = scope.querySelector("p") || document.querySelector("main p, p");
+      if (p) wrap.style.setProperty("--trpl-font", getComputedStyle(p).fontFamily);
+    } catch (e) { /* fonts stay inherited */ }
+  }
+
+  function applyTheme(container, wrap) {
+    var requested = (container.getAttribute("data-theme") || "auto").toLowerCase();
+    var accentOverride = container.getAttribute("data-accent");
+    var sectionBg = detectBackground(container);
+
+    var theme;
+    if (THEMES[requested]) {
+      theme = THEMES[requested];
+    } else {
+      // auto: pick by background luminance
+      var rgb = parseRgb(sectionBg);
+      theme = rgb && luminance(rgb) < 0.35 ? THEMES.dark : THEMES.light;
+    }
+
+    var vars = {
+      "--trpl-text": theme.text,
+      "--trpl-muted": theme.muted,
+      "--trpl-border": theme.border,
+      "--trpl-accent": accentOverride || theme.accent,
+      "--trpl-tab-border": theme.tabBorder,
+      "--trpl-tab-active-bg": theme.tabActiveBg,
+      "--trpl-tab-active-text": theme.tabActiveText
+    };
+
+    // On a dark/colored section, tint the active tab's label with the
+    // section's own background so the tab reads as "cut out" of it.
+    if (theme === THEMES.dark && sectionBg) {
+      vars["--trpl-tab-active-text"] = sectionBg;
+    }
+
+    Object.keys(vars).forEach(function (k) {
+      wrap.style.setProperty(k, vars[k]);
+    });
+
+    if (container.getAttribute("data-fonts") !== "off") {
+      adoptFonts(container, wrap);
+    }
+  }
+
+  // ------------------------------------------------------------ rendering
 
   function el(tag, attrs, children) {
     var node = document.createElement(tag);
@@ -100,16 +246,17 @@
   }
 
   function render(container, data) {
-    var accent = container.getAttribute("data-accent");
     var hideHeading = container.getAttribute("data-heading") === "hide";
-    var root = container.attachShadow ? container.attachShadow({ mode: "open" }) : container;
+    var root = container.shadowRoot ||
+      (container.attachShadow ? container.attachShadow({ mode: "open" }) : container);
+    while (root.firstChild) root.removeChild(root.firstChild);
 
     var style = document.createElement("style");
     style.textContent = STYLE;
     root.appendChild(style);
 
     var wrap = el("div", { class: "trpl-hours" });
-    if (accent) wrap.style.setProperty("--trpl-accent", accent);
+    applyTheme(container, wrap);
 
     var today = new Date().toISOString().slice(0, 10);
     var active = currentSeasonIndex(data.seasons, today);
