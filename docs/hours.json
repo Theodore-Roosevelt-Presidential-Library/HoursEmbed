@@ -1,6 +1,6 @@
 {
   "source": "https://www.trlibrary.com/visit/eat",
-  "generated": "2026-08-26T10:33:17.713Z",
+  "generated": "2026-08-26T10:38:20.187Z",
   "seasons": [
     {
       "label": "Spring",
@@ -132,7 +132,125 @@
     }
   ],
   "schema": {
-    "openingHoursSpecification": [],
-    "specialOpeningHoursSpecification": []
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "description": "Spring restaurant weekday hours",
+        "dayOfWeek": [
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "10:00",
+        "closes": "16:00",
+        "validFrom": "2027-03-02",
+        "validThrough": "2027-05-31"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "description": "Spring restaurant weekend hours",
+        "dayOfWeek": [
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "11:00",
+        "closes": "17:00",
+        "validFrom": "2027-03-02",
+        "validThrough": "2027-05-31"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "description": "Summer restaurant hours",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:30",
+        "validFrom": "2026-06-01",
+        "validThrough": "2026-09-13"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "description": "Fall restaurant weekday hours",
+        "dayOfWeek": [
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "10:00",
+        "closes": "16:00",
+        "validFrom": "2026-09-14",
+        "validThrough": "2026-11-30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "description": "Fall restaurant weekend hours",
+        "dayOfWeek": [
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00",
+        "validFrom": "2026-09-14",
+        "validThrough": "2026-11-30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "description": "Winter restaurant hours",
+        "dayOfWeek": [
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "10:00",
+        "closes": "16:00",
+        "validFrom": "2026-12-01",
+        "validThrough": "2027-03-01"
+      }
+    ],
+    "specialOpeningHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "description": "Christmas",
+        "opens": "00:00",
+        "closes": "00:00",
+        "validFrom": "2026-12-25",
+        "validThrough": "2026-12-25"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "description": "New Years Day",
+        "opens": "00:00",
+        "closes": "00:00",
+        "validFrom": "2027-01-01",
+        "validThrough": "2027-01-01"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "description": "Friends and Family Day",
+        "opens": "00:00",
+        "closes": "00:00",
+        "validFrom": "2026-11-06",
+        "validThrough": "2026-11-06"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "description": "Thanksgiving",
+        "opens": "00:00",
+        "closes": "00:00",
+        "validFrom": "2026-11-26",
+        "validThrough": "2026-11-26"
+      }
+    ]
   }
 }
