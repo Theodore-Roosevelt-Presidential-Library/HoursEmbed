@@ -1,0 +1,138 @@
+{
+  "source": "https://www.trlibrary.com/visit/eat",
+  "generated": "2026-08-26T10:33:17.713Z",
+  "seasons": [
+    {
+      "label": "Spring",
+      "dateLabel": "March 2 - May 31",
+      "start": "2027-03-02",
+      "end": "2027-05-31",
+      "venues": [
+        {
+          "name": "Salt + Scoria Restaurant",
+          "columns": [
+            "Lite service",
+            "Full Service"
+          ],
+          "rows": [
+            {
+              "days": "Tuesday - Friday",
+              "services": [
+                "10am - 11am, 3pm - 4pm",
+                "11am - 3pm"
+              ]
+            },
+            {
+              "days": "Saturday - Sunday",
+              "services": [
+                "3pm - 5pm",
+                "11am - 3pm"
+              ]
+            }
+          ]
+        }
+      ],
+      "holidays": []
+    },
+    {
+      "label": "Summer",
+      "dateLabel": "June 1 - September 13",
+      "start": "2026-06-01",
+      "end": "2026-09-13",
+      "venues": [
+        {
+          "name": "Salt + Scoria Restaurant",
+          "columns": [
+            "Lite service",
+            "Full Service"
+          ],
+          "rows": [
+            {
+              "days": "Daily",
+              "services": [
+                "9am - 11am, 6pm - 7:30pm",
+                "11am - 6pm"
+              ]
+            }
+          ]
+        }
+      ],
+      "holidays": []
+    },
+    {
+      "label": "Fall",
+      "dateLabel": "September 14 - November 30",
+      "start": "2026-09-14",
+      "end": "2026-11-30",
+      "venues": [
+        {
+          "name": "Salt + Scoria Restaurant",
+          "columns": [
+            "Lite service",
+            "Full Service"
+          ],
+          "rows": [
+            {
+              "days": "Tuesday - Friday",
+              "services": [
+                "10am - 11am, 3pm - 4pm",
+                "11am - 3pm"
+              ]
+            },
+            {
+              "days": "Saturday - Sunday",
+              "services": [
+                "9am - 11am, 3pm - 6pm",
+                "11am - 3pm"
+              ]
+            }
+          ]
+        }
+      ],
+      "holidays": [
+        {
+          "date": "November 26",
+          "status": "Closed"
+        }
+      ]
+    },
+    {
+      "label": "Winter",
+      "dateLabel": "December 1 - March 1",
+      "start": "2026-12-01",
+      "end": "2027-03-01",
+      "venues": [
+        {
+          "name": "Salt + Scoria Restaurant",
+          "columns": [
+            "Lite service",
+            "Full Service"
+          ],
+          "rows": [
+            {
+              "days": "Wednesday - Sunday",
+              "services": [
+                "10am - 11am, 3pm - 4pm",
+                "11am - 3pm"
+              ]
+            }
+          ]
+        }
+      ],
+      "holidays": [
+        {
+          "date": "December 25",
+          "status": "Closed"
+        },
+        {
+          "date": "January 1",
+          "status": "Closed"
+        }
+      ]
+    }
+  ],
+  "schema": {
+    "openingHoursSpecification": [],
+    "specialOpeningHoursSpecification": []
+  }
+}
