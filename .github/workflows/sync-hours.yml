@@ -2,7 +2,7 @@ name: Sync hours from trlibrary.com
 
 on:
   schedule:
-    - cron: "17 */6 * * *" # every 6 hours
+    - cron: "17 9 */3 * *" # every 3 days at 9:17 UTC (~3:17am Medora)
   workflow_dispatch:
   push:
     branches: [main]
