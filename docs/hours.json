@@ -1,6 +1,6 @@
 {
   "source": "https://www.trlibrary.com/visit/eat",
-  "generated": "2026-09-16T09:29:32.569Z",
+  "generated": "2026-09-25T09:30:56.692Z",
   "seasons": [
     {
       "label": "Spring",
@@ -75,14 +75,14 @@
             {
               "days": "Tuesday - Friday",
               "services": [
-                "9:30am - 11am",
+                "9am - 11am",
                 "11am - 4pm"
               ]
             },
             {
               "days": "Saturday - Sunday",
               "services": [
-                "8:30am -11am",
+                "9am - 11am",
                 "11am - 6pm"
               ]
             }
@@ -185,7 +185,7 @@
           "Thursday",
           "Friday"
         ],
-        "opens": "09:30",
+        "opens": "09:00",
         "closes": "16:00",
         "validFrom": "2026-09-14",
         "validThrough": "2026-11-30"
@@ -197,7 +197,7 @@
           "Saturday",
           "Sunday"
         ],
-        "opens": "08:30",
+        "opens": "09:00",
         "closes": "18:00",
         "validFrom": "2026-09-14",
         "validThrough": "2026-11-30"
