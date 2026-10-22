@@ -1,6 +1,6 @@
 {
   "source": "https://www.trlibrary.com/visit/eat",
-  "generated": "2026-10-13T09:37:37.630Z",
+  "generated": "2026-10-22T09:31:52.422Z",
   "seasons": [
     {
       "label": "Spring",
@@ -112,7 +112,7 @@
             {
               "days": "Wednesday - Sunday",
               "services": [
-                "10am - 11am, 3pm - 4pm",
+                "9am - 11am, 3pm - 4pm",
                 "11am - 3pm"
               ]
             }
@@ -161,23 +161,6 @@
       },
       {
         "@type": "OpeningHoursSpecification",
-        "description": "Summer restaurant hours",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
-        "opens": "09:00",
-        "closes": "19:30",
-        "validFrom": "2026-06-01",
-        "validThrough": "2026-09-13"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
         "description": "Fall restaurant weekday hours",
         "dayOfWeek": [
           "Tuesday",
@@ -212,7 +195,7 @@
           "Saturday",
           "Sunday"
         ],
-        "opens": "10:00",
+        "opens": "09:00",
         "closes": "16:00",
         "validFrom": "2026-12-01",
         "validThrough": "2027-03-01"
@@ -234,6 +217,14 @@
         "closes": "00:00",
         "validFrom": "2027-01-01",
         "validThrough": "2027-01-01"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "description": "Friends and Family Day",
+        "opens": "00:00",
+        "closes": "00:00",
+        "validFrom": "2026-11-06",
+        "validThrough": "2026-11-06"
       },
       {
         "@type": "OpeningHoursSpecification",
