@@ -1,6 +1,6 @@
 {
   "source": "https://www.trlibrary.com/visit/eat",
-  "generated": "2026-10-22T09:31:52.422Z",
+  "generated": "2026-10-25T09:27:20.959Z",
   "seasons": [
     {
       "label": "Spring",
@@ -217,14 +217,6 @@
         "closes": "00:00",
         "validFrom": "2027-01-01",
         "validThrough": "2027-01-01"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "description": "Friends and Family Day",
-        "opens": "00:00",
-        "closes": "00:00",
-        "validFrom": "2026-11-06",
-        "validThrough": "2026-11-06"
       },
       {
         "@type": "OpeningHoursSpecification",
